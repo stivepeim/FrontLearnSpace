@@ -4,11 +4,12 @@
   <video></video>
   <script>
   try { 
-    navigator.webkitGetUserMedia({audio: true, video: true}, successCallback, errorCallback);
+    navigator.getUserMedia({audio: true, video: true}, successCallback, errorCallback);
   } catch (e) {
     navigator.webkitGetUserMedia("video,audio", successCallback, errorCallback);
   }
   function successCallback(stream) {
+    console.log('stream:', stream)
       document.querySelector('video').src = window.webkitURL.createObjectURL(stream);
   }
   function errorCallback(error) {
