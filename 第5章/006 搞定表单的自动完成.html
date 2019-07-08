@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>示例006 搞定表单的自动完成</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
+    <style type="text/css">
+    body{
+    	margin:50px auto;width:430px;padding:20px;border:1px solid #c88e8e; 
+    	border-radius: 15px; <!-- 设置圆角-->
+    }
+    
+    </style>
+</head>
+<body>
+	<!-- 引用bootstrap的块样式 -->
+    <blockquote>
+        <p>示例006 搞定表单的自动完成</p>
+    </blockquote><!-- 块结束 -->
+    <!-- 登录表单 -->
+	<form action="autocomplete.php" method="get" autocomplete="on">
+		<input type="email" name="email" id="email" value="" autocomplete="on" placeholder="电子邮箱地址" />
+		<input type="password" id="password" name="password" autocomplete="off" placeholder="密码" />
+		<br />
+		<input type="submit" class="btn" value="登录"/>
+	</form>
+	<!-- // 登录表单结束 -->
+</body>
+</html>
+
+

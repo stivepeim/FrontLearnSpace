@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../css/grid.css" />
+    <style>
+    .window_grid{ height:150px;}
+    </style>
+</head>
+<body>
+    <header><h2>一个桌面提醒工具</h2></header>
+    <div class="grid" >
+        <div class="window_grid">
+            <table class="data tablesorter">
+                <thead>
+                    <tr class="tablesorter-header">
+                        <th class="tablesorter-header">
+                            <div class="tablesorter-header-inner">信息</div>
+                        </th>
+                        <th class="tablesorter-header">
+                            <div class="tablesorter-header-inner">间隔时间(秒)</div>
+                        </th>
+                        <th class="tablesorter-header">
+                            <div class="tablesorter-header-inner">距下次提醒时间(秒)</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</body>
+<script>
+    var item_tpl = '<tr class="zebra" data-id="{id}"><td>{msg}</td><td>{time}</td><td>{time}</td></tr>',
+        substitute = function (str, sub) {                          // 字符串格式化函数
+            return str.replace(/\{(.+?)\}/g, function ($0, $1) { return $1 in sub ? sub[$1] : $0; });
+        };
+    function renderList(data) {                                     // 渲染列表
+        var htmls = [];
+        data.forEach(function (item, index) {
+            item.id = index;                                        // 给提醒数据添加索引
+            htmls.push(substitute(item_tpl, item));                 // 将组装的结构添加到html数组
+            item.interval = setInterval(function () {               // 设置计时器
+                var last;
+                if (!item.ondisplay && !item.isremove) {            // 非显示状态和非移除状态
+                    // 获取剩余间隔时间元素
+                    last = document.querySelector('tr[data-id="' + index + '"] :nth-child(3n)'),
+                    time = parseInt(last.innerHTML) - 1;            // 计时减1秒
+                    if (time === 0) { notification(item); }         // 当计时为0时出现提示
+                    else if (time < 0) { time = item.time; };       // 当计时小于0时，显示时间重置
+                    last.innerHTML = time;
+                };
+            }, 1000);
+        });
+        document.querySelector('tbody').innerHTML = htmls.join(''); // 填充列表容器
+    };
+    function removeList(item) {                                     // 移除定时器
+        item.isremove = true;                                       // 给提醒添加移除属性
+        clearInterval(item.interval);                               // 去除定时器
+        storage_data.splice(item.id, 1);                            // 从缓存数据变量中去除提醒
+                                                                    // 将剩余提醒信息重新保存到本地离线缓存
+        localStorage.setItem(storage_key, JSON.stringify(storage_data));
+    };      
+    function notification(data) {                                   // 桌面提醒 
+        if (window.webkitNotifications.checkPermission() > 0) {     // 判断浏览器是否具有权限
+            window.webkitNotifications.requestPermission();         // 浏览器申请权限
+        } else {                                                    // 添加一个提醒
+            var popup = window.webkitNotifications.createNotification('', "提醒", data.msg);
+            popup.ondisplay = function (event) {                    // 提醒出现时触发
+                data.ondisplay = true;                              // 设置提醒标记
+                setTimeout(function () {                            // 4秒后提醒关闭窗
+                    data.close = true;
+                    event.currentTarget.close();
+                }, 3 * 1000);
+            };
+            popup.onclick = popup.onclose = function (event) {      // 监听单击和关闭事件
+                if (!data.close) removeList(data);                  // 人为手动触发则移除提醒
+                data.ondisplay = false;
+            };
+            popup.show();                                           // 打开提醒窗
+            data.popup = popup;                                     // 缓存提醒窗体
+            delete data.close;                                      // 移除自动关闭属性
+        };
+    };
+    window.onunload = function (e) {                                // 页面关闭或刷新时触发
+        storage_data.forEach(function (item) {
+            item.close = true;
+            item.popup && item.popup.close();
+        });
+    };
+    var storage_key = "notification_msg",
+        storage_data = localStorage.getItem(storage_key);
+    if (storage_data) {
+        storage_data = JSON.parse(storage_data);
+    } else {
+        storage_data = [{ msg: '提示信息1', time: 10 }, { msg: '提示信息2', time: 20}];
+        localStorage.setItem(storage_key, JSON.stringify(storage_data));
+    };
+    renderList(storage_data);
+</script>
+</html>

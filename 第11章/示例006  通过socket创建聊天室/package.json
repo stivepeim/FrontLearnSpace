@@ -1,0 +1,9 @@
+{
+    "name": "html-socket-demo",
+    "version": "1.0.0",
+    "main": "app.js",
+    "license": "BSD",
+    "devDependencies": {
+        "websocket": "~1.0.8"
+    }
+}

@@ -1,0 +1,12 @@
+{
+  "author": "zhouyao <zjlszy16@gmail.com>
+  "name": "upload-server",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app"
+  },
+  "dependencies": {
+    "formidable": "1.0.11"
+  }
+}

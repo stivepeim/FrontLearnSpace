@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+	<h2>兴趣爱好：<label></label></h2>
+  	<input type="checkbox" id="c1"></input><label for="c1">篮球</label>
+  	<input type="checkbox" id="c2"></input><label for="c2">游泳</label>
+  	<input type="checkbox" id="c3"></input><label for="c3">唱歌</label>
+  	<input type="checkbox" id="c4"></input><label for="c4">桌游</label>
+  	<br><br>
+  	<button>获取</button>
+</body>
+<script>
+document.querySelector('button').addEventListener('click',function(e){
+	e.preventDefault();
+	var checked = document.querySelectorAll('input:checked'),
+		results = [];
+	checked = Array.prototype.slice.call(checked);
+	checked.forEach(function(item){
+		var id = item.getAttribute('id'),
+			label = document.querySelector('label[for="' + id + '"]');
+		results.push(label.innerHTML);
+	});
+	document.querySelector('h2 > label').innerHTML = results.join(',');
+})
+</script>
+</html>

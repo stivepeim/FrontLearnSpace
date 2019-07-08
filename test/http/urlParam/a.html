@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page A</title>
+</head>
+<body>
+<script>
+    var url = 'b.html?data='+encodeURI('你好');
+</script>
+<h1>url 传递参数</h1>
+<ul>
+    <li>
+        <a href="b.html?data=111">click me to url param number</a>
+    </li>
+    <li>
+        <a href="#" onclick="javascript:window.location.href=url">click me to url param 中文</a>
+    </li>
+</ul>
+
+</body>
+</html>

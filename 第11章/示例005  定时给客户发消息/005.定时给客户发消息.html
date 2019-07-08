@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<title>定时给客户发消息</title>
+<style>
+	.msg{
+		height: 20px; 
+		width: 100px;
+		background: #3195da;
+		color: #fff;
+		display: none;
+		font-size: 12px;
+		padding: 5px 10px;
+		border-radius: 4px;
+		font-weight: bold;
+		cursor: pointer;
+		text-align: center;
+		margin: 0 auto;
+	}
+	.content{
+		width: 400px;
+		margin: 0 auto;
+		background: url(http://localhost/book/code/12/005.bg.png) no-repeat center center;
+		height: 400px;
+		line-height: 400px;
+		color: #fff;
+		text-align:center;
+	}
+	.btn{
+		background: url(http://localhost/book/code/12/005.btn.png) no-repeat center center;
+		width: 178px;
+		height: 60px;
+		text-indent: -9999px;
+		display: block;
+		margin: 0 auto;
+	}
+</style>
+<body>
+	<div class="msg hidden" id="msg"></div>
+	<br>
+	<p class="content">这里是微薄内容，此处内容仅做演示使用</p>
+	<a href="/admin" target="_blank" class="btn">进入后台，添加消息</a>
+</body>
+<script type="text/javascript">
+if(typeof(EventSource) !== "undefined"){
+	var source=new EventSource("/notice");
+	var msg = document.querySelector("#msg");
+	msg.addEventListener('click', function(e){
+		alert("本示例不尝试如何处理消息，如查看消息，标记消息为已读状态等！");
+	});
+	source.addEventListener('message', function(e) {
+		var data = JSON.parse(e.data),
+			newMsgNum = data.length;
+			msg.style.display = 'block';
+			msg.innerHTML = "有" + newMsgNum + "条新消息";
+	}, false);
+
+	source.addEventListener('open', function(e) {
+	  	console.log('open');
+	}, false);
+
+	source.addEventListener('error', function(e) {
+		console.log('error');
+	  if (e.readyState == EventSource.CLOSED) {
+		console.log('Connection was closed');
+	  }
+	}, false);
+}else{
+	alert('您的浏览器Out了！');
+}
+</script>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    .box,
+    .target {
+      width: 400px;
+      height: 400px;
+      border: 1px solid #000;
+    }
+
+    span {
+      width: 100px;
+      height: 100px;
+      border: 1px solid #000;
+      border-radius: 50%;
+      background-color: pink;
+      float: left;
+      text-align: center;
+      line-height: 100px;
+      box-sizing: border-box;
+    }
+
+    .target {
+      position: absolute;
+      left: 600px;
+      top: 200px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <span draggable="true">1</span>
+    <span draggable="true">2</span>
+    <span draggable="true">3</span>
+    <span draggable="true">4</span>
+    <span draggable="true">5</span>
+    <span draggable="true">6</span>
+    <span draggable="true">7</span>
+    <span draggable="true">8</span>
+  </div>
+
+
+  <div class="target"></div>
+
+
+
+
+  <script>
+    // 需求：
+    // 把box中的span 拖拽到target盒子中
+    var temp = null;
+    //1-给所有span标签 绑定拖拽开始的事件 ， 把拖拽的元素放到一个变量temp中
+    var spans = document.querySelectorAll('span');
+
+
+    for (var i = 0; i < spans.length; i++) {
+      spans[i].ondragstart = function () {
+        temp = this;
+        console.log(temp);
+      }
+    }
+    //2-当鼠标进入 目标元素时，吧temp中的存放的元素  追加到 target中
+
+
+    //阻止浏览器的默认行为
+    document.querySelector('.target').ondragover = function (e) {
+      //    默认地，无法将数据/元素放置到其他元素中。如果需要设置允许放置，我们必须阻止对元素的默认处理方式。
+      //这要通过调用 ondragover 事件的 event.preventDefault() 方法：
+      e.preventDefault();
+    }
+
+
+    document.querySelector('.target').ondrop = function () {
+      this.appendChild(temp);
+      temp = null;
+    }
+  </script>
+</body>
+
+</html>

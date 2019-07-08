@@ -1,0 +1,73 @@
+﻿<!DOCTYPE>
+<html>
+<head>
+<title>border-image属性的使用示例</title>
+</head>
+<style type="text/css">
+#div1{
+        border-image: url(borderimage.png) 20 20 20 20 / 20px;
+        -webkit-border-image: url(borderimage.png) 20 20 20 20 / 20px;
+        -moz-border-image: url(borderimage.png) 20 20 20 20 / 20px;
+        width:200px;
+}
+
+#div2{
+    border:solid;
+    border-image: url(borderimage.png) 18/5px;
+    -webkit-border-image: url(borderimage.png) 18/5px;
+    -moz-border-image: url(borderimage.png) 18/5px;
+    width:300px;
+}
+
+#div3{
+    border-image: url(borderimage.png) 18/5px repeat repeat;
+    -webkit-border-image: url(borderimage.png) 18/5px repeat repeat;
+    -moz-border-image: url(borderimage.png) 18/5px repeat repeat;
+    width:300px;
+    height:200px;
+}
+#div4{
+    border-image: url(borderimage.png) 18/5px stretch stretch;
+    -webkit-border-image: url(borderimage.png) 18/5px stretch stretch;
+    -moz-border-image: url(borderimage.png) 18/5px stretch stretch;
+    width:300px;
+    height:200px;
+}
+#div5{
+    border-image: url(borderimage.png) 18/5px repeat stretch;
+    -webkit-border-image: url(borderimage.png) 18/5px repeat stretch;
+    -moz-border-image: url(borderimage.png) 18/5px repeat stretch;
+    width:300px;
+    height:200px;
+}
+#div6{
+    border-image: url(borderimage.png) 18/5px round round;
+    -webkit-border-image: url(borderimage.png) 18/5px round round;
+    -moz-border-image: url(borderimage.png) 18/5px round round;
+    width:300px;
+    height:200px;
+}
+</style>
+<body>
+<div id="div1">
+示例文字
+</div>
+
+<div id="div2">
+    示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字
+</div>
+
+<div id="div3">
+    示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字
+</div>
+<div id="div4">
+
+</div>
+<div id="div5">
+
+</div>
+<div id="div6">
+
+</div>
+</body>
+</html>

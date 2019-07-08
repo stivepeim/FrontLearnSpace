@@ -1,0 +1,163 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <style>
+    .video_box{ position: relative; width:480px; height:320px; }
+    .play_button{
+        position: absolute;
+        top: 50%; left: 50%;
+        margin: -25px 0 0 -25px;
+        width: 50px; height: 50px;
+        vertical-align: baseline;
+        border: 1px solid #1a1b1a;
+        cursor: pointer;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        background: transparent url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAyCAIAAAASmSbdAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAADfSURBVHjaYvDy8gIIIKb///8DBBAIAwQQCAMEEAgDBBAIAwQQCAMEEAgDBBAIAwQQ03+G/wABBKIBAgiEAQIIhAECCIQBAgiEAQIIhAECCIQBAgiEAQKIieE/A0AAgWiAAAJhgABi+vf/H0AAgWiAAAKJAQQQiAYIIBAGCCAQBgggEAYIIBAGCCAQBgggEAYIIBAGCCAQBgggEAYIIJAdAAEEogECCIQBAgiEAQIIhAECCIQBAgiEAQIIhAECCIQBAgiEAQIIhAECCIQBAgiEAQIIhAECCIQBAgiEAQIMADV0jbLIoYBgAAAAAElFTkSuQmCC') repeat-x
+    }
+    .play_button:hover{
+	    border: 1px solid #747474;
+	    background: #747474;
+	    background: transparent url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAyCAIAAAASmSbdAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAADkSURBVHjaYrh16xZAADH9/fsXIICY/v37BxBAIAwQQCA2QACBaIAAAtEAAQSiAQIIhAECCMQGCCAQDRBAIBoggEA0QACBMEAAgdgAAQSiAQIIRAMEEIgGCCAQBgggpj9//gAEEAgDBBBIDCCAmH7//g0QQCAxgAAC8QECCIQBAggkBhBAIBoggEAYIIBAGCCAQHIAAQQSAwggEA0QQCAMEEAgNkAAgWiAAALRAAEEogECCIQBAgjEBgggEA0QQCAaIIBANEAAgTBAAIHYAAEEogECCEQDBBCIBgggEAYIIBAbIMAA0hOUZfQjygYAAAAASUVORK5CYII=') repeat-x;
+    }
+    .play_button div{
+        margin: 13px 0 0 14px; padding: 0;
+        height: 0; width: 0;
+        font-size: 0px;
+        line-height: 0%;
+        border-top: 12px solid transparent;
+        border-left: 24px solid #fff;
+        border-bottom: 12px solid transparent;
+    }
+    .play_controls{
+        position: absolute; top: auto; right: 1px; bottom: -1px; left: 1px; height: 29px; cursor: default;
+	    border-top: 1px solid #000;
+	    -moz-user-select: -moz-none;
+	    -khtml-user-select: none;
+	    -webkit-user-select: none;
+	    -o-user-select: none;
+	    user-select: none;
+	    background: #646464;
+	    background: transparent url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAeCAIAAABi9+OQAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAACbSURBVHjaYvDwcAcIIGZOLk6AAGL68eMHQAAxAQFAADH9//8fIICYGBgYAAIIiP8DBBDTv3//AAIIxAcIIBAGCCAQBgggEAYIIBAGCCAQBgggEAYIIJA8QAAx/Wf4DxBATP///gcIIBAfIICAbAaAAAKJAQQQSD9AAIH4AAEEwgABBGIDBBCIBgggEAYIIBAGCCAQBgggEAYIMAB1v0PS0+tkpgAAAABJRU5ErkJggg==') repeat-x;
+    }
+    .control{
+        cursor: pointer; float: left; text-align: center; 
+        margin: 0; padding: 0;
+        width: 32px; height: 28px;
+    }
+    .play_control{ }
+    .play_control div{
+        margin: 8px 0 0 11px;
+        font-size: 0px;
+        line-height: 0%;
+        cursor: pointer;
+        width: 17px; height: 18px;
+        background: transparent url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAPCAYAAAA/I0V3AAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAEKSURBVHjaYpgxY8b+////M5CCAQKI8fr16/8/f/7M8P3790Y7O7sGBiIAQAAxXrt27T+M8+XLF6I0AwQQiiZiNQMEEOOFCxf+4zLx169fWDUDBBDjmdNn/hPyw7///1A0AwQQ4+HDh/8zEAnY2dnBmgECiAVIEKsHpIHhypUr9QABxPL502eiNa1Zu4bh7LlTDAABxPLp8yeCinft2gVWfOvmXVDkMgIEEMvHjx9xKj558iSKYpg4QACxgOIEHVy9epXh9JlTDHduoyqGAYAAYvn27Rucc//+fYbzF84x3Lh+E6tiGAAIILCmly9fMly+conhyuWreBXDAEAAMaipK4Pi6T8pqRwgwABM+9n3+5s7rgAAAABJRU5ErkJggg==') no-repeat;
+    }
+    .pause_control{ }
+    .pause_control div{
+        height: 13px; width: 5px; float: left;
+	    border-right: 1px solid #000; border-bottom: 1px solid #000;
+	    background: #f1f1f1;
+	    background: transparent url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAANCAIAAADntZOlAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAABNSURBVHjaYjh+/DhAADH9+vULIIBAGCCAQBgggJh+/vwJEEBM379/BwggEAYIIBAGCCAQBgggph8/fgAEEEgOIICYfv/+DRBAIBogwAC/IyVsa3L9ogAAAABJRU5ErkJggg==') repeat-x;
+    }
+    .pause_control div:nth-child(1) { margin: 9px 0 0 11px; }
+    .pause_control div:nth-child(2) { margin: 9px 0 0 2px; }
+    .fullscreen_control{ float:right; }
+    .fullscreen_control div{
+        border: 1px solid #f1f1f1;
+        margin: 11px 0 0 6px; height: 7px; width: 14px;
+	    background: #7a7a7a;
+	    background: transparent url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAANCAIAAADntZOlAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAABNSURBVHjaYti9ezdAADH9+vULIICYfv78CRBATN+/fwcIIBAGCCAQBgggEAYIIKYfP34ABBBIDiCAmH7//g0QQCAaIIBAGCCAQBggwAC2yyVIH487bgAAAABJRU5ErkJggg==') repeat-x;
+    }
+    .fullscreen_control div:hover{
+        margin: 9px 0 0 4px; height: 11px; width: 20px; 
+	    background: #2b5880;
+	    background: transparent url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAALCAIAAAAx7HC4AAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAABJSURBVHjaYnCYcBMggJj+/vkBEEBMf/78AQggJqY/vwECCEQDBBATw+8vAAHE9O/fP4AAYmL89Q0ggEA0QAAB+V8BAggkDhBgAEoNG0hmL6RlAAAAAElFTkSuQmCC') repeat-x;
+    }
+    </style>
+    <script src="../js/jquery-1.8.3.js"></script>
+</head>
+<body>
+    <header><h2>做一个自己的视频播放器</h2></header>
+    <div class="video_box">
+        <video src="../res/BigBuck.webm" width="480" height="320" controls></video>
+    </div>
+</body>
+<script>
+    (function () {
+        // 播放工具条
+        var CONTROLS_HTML = '<div class="play_button" title="播放" data-type="go"><div></div></div>' +
+                            '<div class="play_controls" style="display:none">' +
+                                '<div class="control play_control control_btn" data-type="play" title="播放" style="display:none"><div></div></div>' +
+                                '<div class="control pause_control control_btn" data-type="pause" title="暂停"><div></div><div></div></div>' +
+                                '<div class="control fullscreen_control" title="全屏" data-type="fullscreen"><div></div></div>' +
+                            '</div>';
+        function VideoControl(ele) {                            // 播放工具条类
+            this.video = $(ele);
+            this.init();
+        };
+        VideoControl.prototype = {                              // 原型方法
+            init: function () {
+                // 移除video原本的controls属性，去除浏览器默认工具条
+                this.video.removeAttr('controls');      
+                this._render();
+                this._bind();
+            },
+            _render: function () {                              // 用于生成工具条html结构
+                var wraper = this.wraper = $(document.createElement('div'));
+                wraper.html(CONTROLS_HTML);
+                this.video.parent().append(wraper);             // 将工具类插入文档
+            },
+            _bind: function () {                                // 给工具条的元素绑定事件
+                var self = this,
+                    video = self.video.get(0),                  // 获取对应的原生元素
+                    wraper = self.wraper,
+                    control_btn = wraper.find('div.control_btn');
+                // 用jQuery的delegate方法委托特制元素监听click事件
+                wraper.delegate('div[data-type]', 'click', function (e) {
+                    var data_type = $(this).attr('data-type');  // 获取按钮自定义操作类型属性
+                    switch (data_type) {
+                        case 'go':                              // 初始屏中间大按钮
+                            wraper.find('div.play_button').hide();
+                            wraper.find('div.play_controls').show();
+                            video.play();                       // 播放视频 
+                            break;
+                        case 'play':                            // 自定义工具条播放键
+                            control_btn.toggle();
+                            video.play();
+                            break;
+                        case 'pause':                           // 自定义工具条暂停键
+                            control_btn.toggle();               // 暂停视频
+                            video.pause();
+                            break;
+                        case 'fullscreen':                      // 自定义工具条全屏键
+                            self._requestFullscreen(video);
+                            break;
+                    };
+                });
+            },
+            _requestFullscreen: function (video) {                     // 全屏方法
+                // 各种浏览器全屏方法前缀
+                var prefixs = 'Webkit Moz O ms Khtml'.split(' '),
+                    parent = video,
+                    prefix;
+                // 循环各浏览器前缀名，找寻符合的方法并执行
+                for (var i = 0, l = prefixs.length; i < l; i++) {
+                    prefix = prefixs[i].toLowerCase();
+
+                    if (parent[prefix + 'EnterFullScreen']) {   //兼容不同浏览器全屏方法 
+                        parent[prefix + 'EnterFullScreen']();
+                        break;
+                    } else if (parent[prefix + 'RequestFullScreen']) {
+                        parent[prefix + 'RequestFullScreen']();
+                        break;
+                    };
+                };
+            }
+        };
+        new VideoControl(document.querySelector('video'));      // 实例化自定义工具条类
+    })();   
+</script>
+</html>

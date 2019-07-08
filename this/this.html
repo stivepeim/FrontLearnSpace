@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    // this 最终指向的是调用它的对象
+    function a() {
+      var user = 'stivepeim';
+      console.log(this.user)
+      console.log(this)
+    }
+    // a();
+    window.a();
+
+
+    // 这里this指向的是对象o,因为通过o.fn()来执行的，this的指向在函数创建时决定不了，在调用时才能决定，谁调用的就指向谁
+    var o = {
+      user: 'stivepeim_o',
+      fn: function() {
+        console.log(this.user);
+      }
+    }
+    o.fn();
+
+    
+    // window是js中的全局对象，创建的变量实际上是给window添加属性，继续往下看
+    var p = {
+      user: 'stivepeim_P',
+      fn: function() {
+        console.log(this.user)
+      }
+    }
+    window.p.fn();
+
+    var s = {
+      a: 10,
+      b: {
+        a: 12,
+        fn: function() {
+          console.log(this.a)
+        }
+      }
+    }
+    s.b.fn();
+    // 这里是s点出来的但this并没有指向它，
+    // 1:如果一个函数中有this,但是它没有被上一级的对象调用，那么this指向的就是window，这里需要说明的是在js严格模式下this指向的不是window
+    // 2:如果函数中有this,这个函数有被上一级对象所调用，那么this指向的就是上一级的对象
+    // 3:如果函数中有this，这个函数中包含多个对象，尽管这个函数是被最外层的对象所调用，this指向的也只是上一级的对
+  </script>
+</body>
+</html>

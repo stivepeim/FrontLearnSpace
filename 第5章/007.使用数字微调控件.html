@@ -1,0 +1,71 @@
+﻿<!doctype html>
+<html>
+<head>
+    <style>
+        html { text-align:center; }     /* 所有文本居中 */
+        #spinner { width: 200px; }
+        section
+        {   
+            margin:0 auto;
+            width:300px;
+            padding:15px;
+            background-color:#eee;
+            border-color: #eee;
+            border-radius: 3px;         /* 圆角，水平半径为3px */
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px;
+        }
+        .name-tip
+        {
+            background-color:#D5982D;
+            width:300px;
+            height:200px;
+            line-height:200px;
+            margin-top:10px;
+            border-width: 1px;
+            border-style: solid;
+            border-color: #D69E31 #E3A037 #D5982D #E3A037;
+            -moz-border-radius: 3px;    /* 圆角，水平半径为3px */
+            -webkit-border-radius: 3px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <header><h2>使用数字微调控件</h2></header>
+    <section>
+         <div>
+            <label for="spinner">年龄：</label>
+            <span class="age">
+                <!-- speech x-webkit-speech 表示允许用语音输入-->
+                <input id="spinner" name="spinner" type="number" min="1" max="100" step="1" required speech x-webkit-speech />
+            </span>
+        </div>
+        <!-- 提示容器 -->
+        <div class="name-tip" id="J_name_tip"></div>
+    </section>
+</body>
+<script>
+    var spinner = document.getElementById('spinner'),           // 获取数值文本框元素
+        name_tip = document.getElementById('J_name_tip'),       // 获取提示文本框容器
+        // 生肖数组
+        arr = ['猴', '鸡', '狗', '猪', '鼠', '牛', '虎', '兔', '龙', '蛇', '马', '羊'];
+
+    function getTip() {
+        var number = parseInt(spinner.value),                   // 转换为整型        
+            year = (new Date().getFullYear() - number),         // 获取出生年
+            msg;
+
+        if (!spinner.validity.valid) {                          // 判断是否为数字类型
+            // 填充错误信息，并添加“清空”功能
+            msg = '您输入有误，请<a href="javascript:spinner.value=\'\'">清空</a>后重新输入。';
+        } else {
+            // 正则判断是否为4位数字，如果是则取数组索引是12的模。
+            msg = '您出生于：' + year + '；属：' + (/^\d{4}$/.test(year) ? arr[year % 12] : '未知') + '。';
+        };
+        name_tip.innerHTML = msg;                               // 填充提示容器HTML信息
+    };
+    spinner.addEventListener('input', getTip, false);           // 数值文本框input事件
+    spinner.addEventListener('speechchange', getTip, false);    // 数值文本框speechchange事件
+</script>
+</html>

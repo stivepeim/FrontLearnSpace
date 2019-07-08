@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>aboutThis1</title>
+</head>
+
+<body>
+  <script>
+    // 特殊情况
+    console.group('特殊情况 START')
+    var x = {
+      a: 10,
+      b: {
+        a: 12,
+        fn: function () {
+          console.log(this.a);
+          console.log(this);
+        }
+      }
+    }
+    var j = x.b.fn;
+    j();
+    console.groupEnd()
+
+    // 难点
+    // 1: this 永远指向的是调用它的对象
+    // 2: 下面的y.user之所以能打印出来是因为new关键字可以改变this的指向。这个this指向对象y，因为new关键字就是创建一个对象实例
+    console.group('构造函数版this')
+
+    function Fn() {
+      this.user = 'Stivepeim_this';
+    }
+    var y = new Fn();
+    console.log(y.user);
+    console.groupEnd()
+
+    console.group('当this碰到return时');
+    // 根据注释掉的return查看运行结果
+    // 如果返回值是一个对象，那么this指向的就是返回的对象，如果返回值不是一个对象，那么this还是指向函数的实例，
+    // null也算是对象，null比较特殊 但是this还会指向函数实例
+    function rf() {
+      this.user = 'stivepeim'
+      // return {} // => undefined
+      // return function(){} // => undefined
+      // return 1; // => stivepeim
+      // return undefined // => stivepeim
+      return null // => stivepeim
+    }
+    var w = new rf();
+    console.log(w.user);
+    console.groupEnd();
+
+    // 补充
+    // 1：在严格模式下this指向的不是window而是undefined
+    // 2: new操作符会改变函数this的指向问题
+    console.group('new 关键字和this')
+
+    function fff() {
+      this.num = 1;
+    }
+    var aa = new fff();
+    console.log(aa.num)
+    console.groupEnd()
+    // 为什么this会指向a，首先new关键字创建一个空的对象，然后会自动调用一个函数apply方法，将this指向这个空对象，这样函数内部的this就会被这个空对象替代
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+﻿<!DOCTYPE>
+<html>
+<head>
+<style type="text/css">
+  .test_demo_clip{
+  	text-overflow:clip; 
+  	overflow:hidden; 
+  	white-space:nowrap; 
+  	width:200px; 
+  	background:#ccc;
+  }
+  .test_demo_ellipsis{
+  	text-overflow:ellipsis; 
+  	overflow:hidden; 
+  	white-space:nowrap; 
+  	width:200px; 
+  	background:#ccc;
+  }
+</style>
+</head>
+<body>
+<h2>text-overflow : clip </h2>
+  <div class="test_demo_clip">
+  不显示省略标记，而是简单的裁切条
+</div>
+<h2>text-overflow : ellipsis </h2>
+<div class="test_demo_ellipsis">
+  当对象内文本溢出时显示省略标记
+</div>
+</body>
+</html>

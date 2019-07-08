@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>apply</title>
+</head>
+<body>
+  <script>
+  // apply 方法调用一个具有给定this值的函数,以及作为一个数组(或类似数组对象)提供的参数
+  // 语法 func.apply(thisArg, [argsArray])
+  console.group('base demo')
+  var numbers = [5,6,2,3,9,8];
+  var max = Math.max.apply(null,numbers);
+  console.log(max)
+  var min = Math.min.apply(null,numbers);
+  console.log(min)
+  console.groupEnd()
+
+  console.group('apply1')
+  var array = ['a','b']
+  var elements = [0,1,2,3]
+  // console.log(array.concat(elements)) // concat 实际上并不是附加到现有数组,而是创建并返回一个新数组
+  array.push.apply(array,elements)
+  console.log(array)
+  console.groupEnd()
+
+  console.group('找出最大/小的数字')
+  var numberss = [5,6,7,8,9]
+  // 使用Math.max和Math.min完成
+  var max = Math.max.apply(null,numberss)
+  var min = Math.min.apply(null,numberss)
+  console.log('max:' + max +'|min:' + min)
+  // 代码对比用循环完成
+  var mmax = -Infinity,mmin = +Infinity;
+  for(var i=0; i< numberss.length;i++) {
+    if(numberss[i] > mmax){
+      mmax = numberss[i];
+    }
+    if(numberss[i] < mmin){
+      mmin = numberss[i]
+    }
+  }
+  console.log('mmax:' + mmax+'|mmin:' + mmin)
+  console.groupEnd()
+  </script>
+</body>
+</html>

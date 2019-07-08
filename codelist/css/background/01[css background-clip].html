@@ -1,0 +1,28 @@
+﻿<!DOCTYPE>
+<html>
+<head>
+<title>两种background-clip属性值的对比示例</title>
+<style type="text/css">
+div{
+        background-color: black;
+        background-image: url(flower-green.png);
+        border: dashed 15px green;
+        padding: 30px;
+        color:white;
+        font-size:2em;
+        font-weight:bold;
+}
+div.div1{
+        -moz-background-clip: border;
+        -webkit-background-clip: border;
+}
+div.div2{
+        -moz-background-clip: padding;
+        -webkit-background-clip: padding;
+}
+</style>
+</head>
+<body>
+<div class="div1">示例文字1</div><br>
+<div class="div2">示例文字2</div>
+</body>

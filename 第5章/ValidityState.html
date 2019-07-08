@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+valueMissing应用
+<body>
+<form>
+
+<!--  HTML代码 -->
+<input type="text" required id="username" name="username" onblur="valit_username();"/>
+<!-- JavaScript 代码 -->
+<script>
+	function valit_username(){
+		var username = document.querySelector("#username");		//获取用户名表单控件
+		if(true == username.validity.valueMissing){				//判断用户名是否为空
+			username.setCustomValidity('用户名不能为空');		//验证失败，修改提示信息
+		}else{
+			username.setCustomValidity('');						//清除出错信息
+		}
+	}
+	valit_username();											//出错信息初始化
+</script>
+
+
+
+<!--  HTML代码 -->
+<input type="email" required id="email" name="email" onblur="valit_email();"/>
+<!-- JavaScript 代码 -->
+<script>
+	function valit_email(){
+		var email = document.querySelector("#email");			//获取电子邮箱表单控件
+		if(true == email.validity.typeMismatch){				//判断电子邮箱格式是否正确
+			email.setCustomValidity('电子邮箱格式不正确');		//验证失败，修改提示信息
+		}else{
+			email.setCustomValidity('');						//清除出错信息
+		}
+	}
+	valit_email();
+</script>
+
+
+
+<!--  HTML代码 -->
+<input type="text" id="phone" required pattern="^((13)|18|15)+\d{9}$" name="phone" onblur="valit_phone()">
+<!-- JavaScript 代码 -->
+<script>
+	function valit_phone(){
+		var phone = document.querySelector("#phone");					//获取手机号码表单控件
+		if(true == phone.validity.typeMismatch){						//判断手机号码是与正则表达式匹配
+			phone.setCustomValidity('手机号码必须是以13、15、18开头的11位数字');	//验证失败，修改提示信息
+		}else{
+			phone.setCustomValidity('');								//清除出错信息
+		}
+	}
+	valit_phone();
+</script>
+
+<!--  HTML代码 -->
+<input type="range" id="qq" required min=5 max=200 step=10 name="qq" onblur="valit_qq()">
+<!-- JavaScript 代码 -->
+<script>
+	function valit_qq(){
+		var qq = document.querySelector("#qq");					//获取手机号码表单控件
+		if(true == qq.validity.rangeUnderflow){						//判断手机号码是与正则表达式匹配
+			qq.setCustomValidity('QQ号码最少5位');	//验证失败，修改提示信息
+		}else if(true == qq.validity.rangeOverflow){
+			qq.setCustomValidity('QQ号码最多13位位');
+		}else if(true == qq.validity.stepMismatch){
+			qq.setCustomValidity('数据不合法，步阶为5');
+		}else{
+			qq.setCustomValidity('');								//清除出错信息
+		}
+	}
+	valit_qq();
+</script>
+
+
+
+<input type="submit" value="提交" />
+</form>
+</body>
+</html>
+
+

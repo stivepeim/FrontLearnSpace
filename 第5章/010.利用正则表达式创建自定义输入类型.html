@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
+    <title>示例010 利用正则表达式创建自定义输入类型</title>
+    <style type="text/css">
+    body{
+    	margin:50px auto;width:430px;padding:20px;border:1px solid #c88e8e;
+    	border-radius: 15px;                                                       /*  设置圆角 */
+    }
+    span.msg{font-size: 10px;display: block;}                               /* 验证提示信息 */
+    .info{line-height: 30px; font-weight: bold;}                            /* 不能填字段 */
+    </style>
+</head>
+<body>
+
+    <blockquote>
+        <p>示例010 利用正则表达式创建自定义输入类型</p>
+    </blockquote><!-- 块结束 -->
+
+    <!-- 表单开始 -->
+    <h4>在电子商务网站中设置个人基本信息</h4>
+    <br>
+    <form class="form-horizontal" name="myform">
+        <div class="control-group">
+            <label class="control-label">用户名</label>
+            <div class="controls info">spricity</div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">会员类型</label>
+            <div class="controls info">个人用户</div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="nickname">昵称</label>
+            <div class="controls">
+                <!-- 自定义昵称输入类型 -->
+                <input type="text" id="nickname" required pattern="^[0-9A-Za-z\u4e00-\u9fa5_\-]+$" name="nickname">
+                <!-- 昵称验证类型提醒 -->
+                <span class="msg">可由中英文、数字、“_”、“-”组成</span>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">邮箱</label>
+            <div class="controls info">spricity@gmail.com</div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">手机号</label>
+            <div class="controls info">186*****581</div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="cardno">身份证号</label>
+            <div class="controls">
+                <!-- 自定义身份证号输入类型 -->
+                <input type="text" id="cardno" pattern="^(\d{15}$|^\d{18}$|^\d{17}(\d|X|x))$" name="cardno">
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <button type="submit" class="btn">提交</button>
+            </div>
+        </div>
+    </form><!-- 表单结束 -->
+</body>
+</html>
+
+

@@ -1,0 +1,52 @@
+﻿<!DOCTYPE >
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8"/>
+    <title>E::selection伪类选择器使用示例</title>
+    <style type="text/css">
+        p::selection {
+            background: red;
+            color: #FFF;
+        }
+
+        p::-moz-selection {
+            background: red;
+            color: #FFF;
+        }
+
+        input[type="text"]::selection {
+            background: gray;
+            color: #FFF;
+        }
+
+        input[type="text"]::-moz-selection {
+            background: gray;
+            color: #FFF;
+        }
+
+        td::selection {
+            background: green;
+            color: #FFF;
+        }
+
+        td::-moz-selection {
+            background: green;
+            color: #FFF;
+        }
+    </style>
+</head>
+<body>
+<p>这是一段测试文字。</p>
+<input type="text" value="这是一段测试文字。"/>
+<p/>
+<table border="1" cellspacing="0" cellpadding="0">
+    <tr>
+        <td>测试文字</td>
+        <td>测试文字</td>
+    </tr>
+    <tr>
+        <td>测试文字</td>
+        <td>测试文字</td>
+    </tr>
+</body>
+</html>

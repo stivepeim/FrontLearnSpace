@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>在线代码编辑器-结果</title>
+</head>
+<body>
+</body>
+<script>
+ var this_html = document.querySelector("html");
+	// 监听从“在线代码编辑器.html”页面是否有postMessage请求
+    window.addEventListener('message', function(evt) {			// message事件代理
+        if(evt.origin === 'http://localhost:8080'){				// 判断发消息的来源是否正确
+			var html = document.createElement("html");			// 创建<html>标签
+			var data = "" + evt.data;							// 将evt.data转成字符串
+			html.innerHTML = evt.data;							// 设置<html>标签的内容
+			var _reg=/<script[^>]*>.*(?=<\/script>)<\/script>/gi;	// 匹配<script>标签的正则表达式
+			data = data.replace(_reg,"");						// 替换<script>标签为空
+			var _scripts = html.getElementsByTagName("script");	// 获取传过来的所有<script>
+			this_html.innerHTML = data;							// 替换当前页面的HTML的内容
+			var body = this_html.querySelector("body");			// 获取当前页面的body标签
+			if(_scripts.length){								// 判断是否有JavaScript语句
+				for(var i = 0, length = _scripts.length; i < length; i++){
+					var script = document.createElement("script");
+					if(_scripts[i].src){						// JavaScrip是外部引用文件
+						script.src = _scripts[i].src;			// 则设置其src属性
+					}else{										// 否则设置其为内联JavaScript
+						script.innerHTML = _scripts[i].innerHTML;
+					}
+					body.insertBefore(script);					// 把<script>标签插入到body中执行
+				}
+			}
+        }
+    }, false);
+</script>
+</html>
