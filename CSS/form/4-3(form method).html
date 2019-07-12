@@ -1,14 +1,16 @@
 ﻿<!DOCTYPE html>
+<html lang="en">
 <head>
-  <title>formmethod属性示例</title>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>formMethod</title>
 </head>
-<form id="testform" action="serve.jsp">   
+<body>
+  <form id="testform" action="serve.jsp">   
     <input type="submit" name="s1" value="v1" formaction="s1.jsp" formmethod="post">提交到S1    
     <input type="submit" name="s2" value="v2" formaction="s2.jsp" formmethod="get">提交到S2    
     <input type="submit">
 </form>
-
-
-
-
+</body>
+</html>

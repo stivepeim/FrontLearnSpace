@@ -1,10 +1,16 @@
 ﻿<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>output元素示例</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>output</title>
 </head>
-<form id="testform">
-请选择一个数值：
-<input name="range1" type=range min=0 max=100 step=5/>
-<output onforminput="value=range1.value">50</output>
-</form>
+<body>
+    <form id="testform">
+        请选择一个数值：
+        <input name="range1" type=range min=0 max=100 step=5/>
+        <output onforminput="value=range1.value">50</output>
+        </form>
+</body>
+</html>
