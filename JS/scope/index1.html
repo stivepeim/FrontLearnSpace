@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Scope-作用域</title>
+</head>
+<body>
+    <script>
+    function foo(a){
+        console.log(a+b);
+    }
+    var b = 2;
+    foo(3); // 在这里调用函数之前，所有函数中需要使用到的变量都得定义
+    </script>
+</body>
+</html>
