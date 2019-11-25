@@ -1,1 +1,199 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>emailRisk</title>
+<!--  <style type="text/css" src="./forRisk/normalize.css"></style>-->
+<!--  <script>!function(e){function t(a){if(i[a])return i[a].exports;var n=i[a]={exports:{},id:a,loaded:!1};return e[a].call(n.exports,n,n.exports,t),n.loaded=!0,n.exports}var i={};return t.m=e,t.c=i,t.p="",t(0)}([function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var i=window;t["default"]=i.flex=function(e,t){var a=e||100,n=t||1,r=i.document,o=navigator.userAgent,d=o.match(/Android[\S\s]+AppleWebkit\/(\d{3})/i),l=o.match(/U3\/((\d+|\.){5,})/i),c=l&&parseInt(l[1].split(".").join(""),10)>=80,p=navigator.appVersion.match(/(iphone|ipad|ipod)/gi),s=i.devicePixelRatio||1;p||d&&d[1]>534||c||(s=1);var u=1/s,m=r.querySelector('meta[name="viewport"]');m||(m=r.createElement("meta"),m.setAttribute("name","viewport"),r.head.appendChild(m)),m.setAttribute("content","width=device-width,user-scalable=no,initial-scale="+u+",maximum-scale="+u+",minimum-scale="+u),r.documentElement.style.fontSize=a/2*s*n+"px"},e.exports=t["default"]}]);-->
+<!--  flex(100, 1);</script>-->
+  <style>
+    /*@media screen and (min-width:240px) {*/
+    /*  html, body, button, input, select, textarea {*/
+    /*    font-size:9px;*/
+    /*  }*/
+    /*}*/
+    /*@media screen and (min-width:320px) {*/
+    /*  html, body, button, input, select, textarea {*/
+    /*    font-size:12px;*/
+    /*  }*/
+    /*}*/
+    /*@media screen and (min-width:360px) {*/
+    /*  html, body, button, input, select, textarea {*/
+    /*    font-size:13.5px;*/
+    /*  }*/
+    /*}*/
+    /*@media screen and (min-width:375px) {*/
+    /*  html, body, button, input, select, textarea {*/
+    /*    font-size:14.0625px;*/
+    /*  }*/
+    /*}*/
+    *{
+      font-size: 12px;
+    }
+    .content{
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-content: center;
+      width:56.67rem;
+      height:56.83rem;
+      background:rgba(234,248,255,0.58);
+      /*margin-top: 10rem;*/
+    }
+    .riskTitle{
+      width:39.33rem;
+      height:3.42rem;
+      font-size:2.42rem;
+      font-family:PingFangSC-Semibold,PingFang SC;
+      font-weight:600;
+      color:rgba(25,25,25,1);
+      line-height:3.42rem;
+      margin-top: 4rem;
+      margin-left: 8.67rem;
+      margin-right: 8.67rem;
+    }
+    .viewBox{
+      width:50rem;
+      height:43.17rem;
+      background:rgba(255,255,255,1);
+      border-radius:0.67rem;
+      margin-top: 2.92rem;
+      margin-left: 3.33rem;
+      margin-right: 3.33rem;
+    }
+    .viewBox .viewBoxTitle1{
+      width:7.17rem;
+      height:2.08rem;
+      font-size:1.5rem;
+      font-family:PingFangSC-Medium,PingFang SC;
+      font-weight:500;
+      color:rgba(25,25,25,1);
+      line-height:2.08rem;
+      margin: 2.5rem 38.25rem 0 4.58rem;
+    }
+    .viewBox .viewBoxText {
+      width:41.83rem;
+      height:9.25rem;
+      font-size:1.42rem;
+      font-family:PingFangSC-Regular,PingFang SC;
+      font-weight:400;
+      color:rgba(114,114,114,1);
+      line-height:2.67rem;
+      margin: 0.83rem 3.58rem 0 4.58rem;
+    }
+    .viewBox .inputTile1{
+      width:13.25rem;
+      height:1.67rem;
+      font-size:1.17rem;
+      font-family:PingFangSC-Regular,PingFang SC;
+      font-weight:400;
+      color:rgba(114,114,114,1);
+      line-height:1.67rem;
+      margin: 1.17rem 32.17rem 0 4.58rem;
+    }
+    .viewBox .inputTile2{
+      width:10.92rem;
+      height:1.67rem;
+      font-size:1.17rem;
+      font-family:PingFangSC-Regular,PingFang SC;
+      font-weight:400;
+      color:rgba(114,114,114,1);
+      line-height:1.67rem;
+      margin: 1.33rem 34.5rem 0 4.58rem;
+    }
+    .viewBox .viewBoxTitle2{
+      width:13rem;
+      height:2.08rem;
+      font-size:1.5rem;
+      font-family:PingFangSC-Medium,PingFang SC;
+      font-weight:500;
+      color:rgba(25,25,25,1);
+      line-height:2.08rem;
+      margin: 0.83rem 32.42rem 0 4.58rem;
+    }
+    .viewBox .input1{
+      width:40.83rem;
+      height:4rem;
+      background:rgba(255,255,255,1);
+      border-radius:0.33rem;
+      border:0.08rem solid rgba(219,219,219,1);
+      margin: 0.42rem 4.58rem 0 4.58rem;
+    }
+    .viewBox .input1::placeholder {
+      width:8.67rem;
+      height:2rem;
+      font-size:1.33rem;
+      font-family:PingFangSC-Regular,PingFang SC;
+      font-weight:400;
+      color:rgba(33,33,33,1);
+      line-height:2rem;
+      padding: 1rem 32.5rem 1rem 1rem;
+    }
+    .viewBox .input2{
+      width:40.83rem;
+      height:4rem;
+      background:rgba(255,255,255,1);
+      border-radius:0.33rem;
+      border:0.08rem solid rgba(219,219,219,1);
+      margin: 0.42rem 4.58rem 0 4.58rem;
+    }
+    .viewBox .input2::placeholder {
+      width:8.67rem;
+      height:2rem;
+      font-size:1.33rem;
+      font-family:PingFangSC-Regular,PingFang SC;
+      font-weight:400;
+      color:rgba(33,33,33,1);
+      line-height:2rem;
+      padding: 1rem 31.17rem 1rem 1rem;
+    }
+    .viewBox .submit{
+      width:40.83rem;
+      height:4rem;
+      background:rgba(25,25,25,1);
+      border-radius:0.33rem;
+      margin: 2.17rem 4.58rem 4.75rem 4.58rem;
+    }
+    .viewBox .submit .submitText{
+      width:4.5rem;
+      height:1.83rem;
+      font-size:1.33rem;
+      font-family:PingFangSC-Medium,PingFang SC;
+      font-weight:500;
+      color:rgba(255,255,255,1);
+      line-height:1.83rem;
+    }
+  </style>
+</head>
+<body>
+<div class="container" id="container">
+  <div class="content">
+      <div class="riskTitle">Payment Verification of Your Order</div>
+      <div class="viewBox">
+        <h5 class="viewBoxTitle1">Instruction</h5>
+        <div class="viewBoxText">
+          Our system detected your  order  is a high risky order, in order to confirm the authenticity of the order and protect your property, please provide us the related information below.Thanks!
+        </div>
+        <h5 class="viewBoxTitle2">Submit Information</h5>
+        <div class="inputTile1">Cardholder's full name</div>
+        <input class="input1" placeholder="Enter Name">
+        <div class="inputTile2">Card issued country</div>
+        <input class="input2" placeholder="Enter Country">
+        <button class="submit">
+          <span class="submitText">Submit</span>
+        </button>
+      </div>
+  </div>
+</div>
+<script>
+  const u = navigator.userAgent;
+  let isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+  let isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+  if(isAndroid || isiOS){
+    document.getElementById('container').style.marginTop = '20rem';
+  }
+</script>
+</body>
+</html>
