@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>formData中的数据console</title>
+</head>
+<body>
+    <script>
+    let f = new FormData()
+    f.append('name','stivepeim')
+    f.append('age',18)
+    f.append('hobby','coding')
+    console.log('getName:', f.get('name'))
+    console.log('getAge:', f.get('age'))
+    console.log('getHobby:', f.get('hobby'))
+    </script>
+</body>
+</html>
