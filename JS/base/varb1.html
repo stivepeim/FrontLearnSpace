@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>let/var/const</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let a = {};
+    var b = {};
+    const c = {};
+    const d = 100;
+    a.age = 18;
+    a.sex = 'man';
+    console.log('a:', a);
+    b.age = 20;
+    b.sex = 'feman';
+    console.log('b:', b);
+    c.age = 30;
+    c.sex = '不告诉你';
+    console.log('c:', c);
+    (function(){
+        console.log('没有什么神奇的，这样的写法会自动执行而已')
+    })();
+    c.hobby = '吃饭睡觉打豆豆';
+    console.log('"after:C:', c);
+    let cc = {key:'魔镜魔镜谁最漂亮'};
+    c.extend = cc;
+    console.log('c:', c)
+    // d = 99
+    // console.log('d:', d)
+    // let,var 的值必须能修改
+    // const 属性不能修改，但对引用类型有不一样的效果，引用类型的属性可以修改，因为内存地址不变，但若更改对象或者重新给对象赋值
+    // 则会出现错误不允许赋值，因为内存地址发生了变化，对象属性可修改，数组内容可修改
+</script>
+</html>
