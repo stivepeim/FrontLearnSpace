@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>fileReader</title>
+</head>
+<body>
+    <script>
+    const filetxt = new FileReader('D:\Workspaces-me\JavaScript\FrontLearnSpace\lib\redeme.txt');
+    if(filetxt.error){
+        console.log('读取文件出错')
+        return
+    }
+    filetxt.read
+    console.log('filetxt.readyState:', filetxt.readyState)
+    if(filetxt.readyState === 0){
+        console.log('数据未加载')
+    }
+    if(filetxt.readyState === 1){
+        console.log('数据正在加载')
+    }
+    if(filetxt.readyState === 2){
+        console.log('数据加载完毕')
+    }
+
+    let txtResult = filetxt.result
+    console.log('txtResult:', txtResult)
+    </script>
+</body>
+</html>
