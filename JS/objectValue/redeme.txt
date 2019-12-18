@@ -1,0 +1,6 @@
+属性值
+1:Infinity
+2:NaN
+3:undefined
+4:null
+5:globalThis
