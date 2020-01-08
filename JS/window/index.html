@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Window Close</title>
+    <script>
+        window.onbeforeunload = function (e) {
+            e = e || window.event;
+
+            // 兼容IE8和Firefox 4之前的版本
+            if (e) {
+                e.returnValue = '关闭提示';
+            }
+
+            // Chrome, Safari, Firefox 4+, Opera 12+ , IE 9+
+            return '关闭提示';
+            };
+        // window.onbeforeunload = function(e){
+        //     // var e = window.event||e;  
+        //     // e.returnValue=('这个操作很危险啊')
+        //     return 'what?'
+        // }
+        // window.onunload = function(){
+        //     // var e = window.event||e;  
+        //     // event.returnValue=('这个操作很危险啊')
+        //     return 'what?'
+        // }
+
+        </script>
+</head>
+<body>
+    
+    <h1>刷新前先打开弹窗</h1>
+
+
+</body>
+</html>
