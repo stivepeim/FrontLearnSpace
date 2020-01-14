@@ -133,6 +133,44 @@
     console.log(forReverseArr2.reverse())
     console.log(forReverseString1.split('').reverse().join(''))
     console.groupEnd()
+
+    // reduce 去重
+    let arrrr = [
+        {
+            name:'yy',age:30,sex:1
+        },
+        {
+            name:'yy',age:30,sex:1
+        },
+        {
+            name:'mm',age:32,sex:0
+        },
+        {
+            name:'hh',age:3,sex:0
+        },
+        {
+            name:'yy',age:30,sex:1
+        },
+        {
+            name:'yy',age:30,sex:1
+        },
+        {
+            name:'yy',age:30,sex:1
+        },
+    ]
+    // todo todo todo
+    let hash = {}
+    console.group('reduce')
+    arrrr = arrrr.reduce((item, next) => {
+        // console.log('item:', item)
+        // console.log('next:', next)
+        console.log('hash[next.name]:', hash[next.name])
+        hash[next.name] ? '':hash[next.name] = true && item.push(next);
+        return item;
+    }, []);
+    console.log('arrrr:', arrrr)
+    console.log('hash:', hash)
+    console.groupEnd()
 </script>
 </body>
 </html>
