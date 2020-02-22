@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>粘贴图片</title>
+</head>
+<body>
+    <div id="result">nothing</div>
+    <script>
+        let body = document.getElementsByTagName('body')[0];
+        body.addEventListener('paste', function(e){
+            let clipboard = e.clipboardData;
+            let type = clipboard.items[0].type;
+            if(type.match(/image/)){
+                let blob = clipboard.items[0].getAsFile();
+                let file = new FileReader();
+                file.addEventListener('loadend', function(e){
+                    document.getElementById('result').innerHTML =`<img src=${ e.target.result }>` ;
+                })
+                file.readAsDataURL(blob);
+            }else{
+                document.getElementById('result').innerHTML = 'not a image type'
+            }
+        })
+    </script>
+</body>
+</html>
