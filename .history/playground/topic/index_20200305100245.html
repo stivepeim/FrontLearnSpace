@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>player1</title>
+</head>
+<body>
+    <script>
+        // function f(){}
+        //     const a = f.prototype,
+        //           b = Object.getPrototypeOf(f)
+        //     console.log('a:', a)
+        //     console.log('b:', b)
+        
+
+        let f = function(){
+            this.a = 1;
+            this.b = 2;
+        }
+
+        let o = new f();
+        f.prototype.b = 3;
+        f.prototype.c = 4;
+        console.log('o.a', o.a)
+        console.log('o.b', o.b)
+        console.log('o.c', o.c)
+        console.log('o.d', o.d)
+
+    </script>
+</body>
+</html>
